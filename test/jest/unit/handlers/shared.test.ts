@@ -8,8 +8,8 @@ import {
   populateFeeOptions,
 } from '../../../../lib/handlers/shared'
 import { getAmount } from '../../../utils/tokens'
-import { CurrencyAmount, Percent } from '@uniswap/sdk-core'
-import { DAI_MAINNET, SwapOptions, SwapType } from '@uniswap/smart-order-router'
+import { CurrencyAmount, Percent } from '@taraswap/sdk-core'
+import { DAI_MAINNET, SwapOptions, SwapType } from '@taraswap/smart-order-router'
 
 describe('shared', () => {
   it('parsePortionPercent', () => {

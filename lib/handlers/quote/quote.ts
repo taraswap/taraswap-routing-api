@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi'
-import { Protocol } from '@uniswap/router-sdk'
-import { ChainId, Currency, CurrencyAmount, Token, TradeType } from '@uniswap/sdk-core'
+import { Protocol } from '@taraswap/router-sdk'
+import { ChainId, Currency, CurrencyAmount, Token, TradeType } from '@taraswap/sdk-core'
 import {
   AlphaRouterConfig,
   ID_TO_NETWORK_NAME,
@@ -11,8 +11,8 @@ import {
   SimulationStatus,
   SwapOptions,
   SwapRoute,
-} from '@uniswap/smart-order-router'
-import { Pool } from '@uniswap/v3-sdk'
+} from '@taraswap/smart-order-router'
+import { Pool } from '@taraswap/v3-sdk'
 import JSBI from 'jsbi'
 import _ from 'lodash'
 import { APIGLambdaHandler, ErrorResponse, HandleRequestParams, Response } from '../handler'
@@ -34,6 +34,7 @@ import { CurrencyLookup } from '../CurrencyLookup'
 import { SwapOptionsFactory } from './SwapOptionsFactory'
 import { GlobalRpcProviders } from '../../rpc/GlobalRpcProviders'
 import semver from 'semver'
+import { Pair } from '@taraswap/v2-sdk'
 
 export class QuoteHandler extends APIGLambdaHandler<
   ContainerInjected,
@@ -510,7 +511,7 @@ export class QuoteHandler extends APIGLambdaHandler<
             amountIn: edgeAmountIn,
             amountOut: edgeAmountOut,
           })
-        } else {
+        } else if (nextPool instanceof Pair) {
           const reserve0 = nextPool.reserve0
           const reserve1 = nextPool.reserve1
 

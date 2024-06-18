@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@taraswap/sdk-core'
 import { SingleJsonRpcProvider } from './SingleJsonRpcProvider'
 import { UniJsonRpcProvider } from './UniJsonRpcProvider'
 import Logger from 'bunyan'

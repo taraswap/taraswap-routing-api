@@ -1,4 +1,4 @@
-import { CacheMode } from '@uniswap/smart-order-router'
+import { CacheMode } from '@taraswap/smart-order-router'
 
 interface CachedRoutesBucketsArgs {
   /**

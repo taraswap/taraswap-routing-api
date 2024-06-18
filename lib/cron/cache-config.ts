@@ -1,6 +1,6 @@
-import { Protocol } from '@uniswap/router-sdk'
-import { V2SubgraphProvider, V3SubgraphProvider } from '@uniswap/smart-order-router'
-import { ChainId } from '@uniswap/sdk-core'
+import { Protocol } from '@taraswap/router-sdk'
+import { V2SubgraphProvider, V3SubgraphProvider } from '@taraswap/smart-order-router'
+import { ChainId } from '@taraswap/sdk-core'
 
 // during local cdk stack update, the env vars are not populated
 // make sure to fill in the env vars below
@@ -311,5 +311,11 @@ export const chainProtocols = [
       v2UntrackedUsdThreshold,
       v2SubgraphUrlOverride(ChainId.BLAST)
     ),
+  },
+  {
+    protocol: Protocol.V3,
+    chainId: ChainId.TARAXA_TESTNET,
+    timeout: 90000,
+    provider: new V3SubgraphProvider(ChainId.TARAXA_TESTNET, 3, 90000),
   },
 ]

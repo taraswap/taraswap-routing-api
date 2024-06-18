@@ -1,5 +1,5 @@
-import { Currency, Token } from '@uniswap/sdk-core'
-import { ITokenListProvider, ITokenProvider, NATIVE_NAMES_BY_ID, nativeOnChain } from '@uniswap/smart-order-router'
+import { Currency, Token } from '@taraswap/sdk-core'
+import { ITokenListProvider, ITokenProvider, NATIVE_NAMES_BY_ID, nativeOnChain } from '@taraswap/smart-order-router'
 import Logger from 'bunyan'
 import { isAddress } from '../util/isAddress'
 

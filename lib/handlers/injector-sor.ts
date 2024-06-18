@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@uniswap/sdk-core'
+import { ChainId, Token } from '@taraswap/sdk-core'
 import {
   CachingGasStationProvider,
   CachingTokenListProvider,
@@ -38,7 +38,7 @@ import {
   V2PoolProvider,
   V2QuoteProvider,
   V3PoolProvider,
-} from '@uniswap/smart-order-router'
+} from '@taraswap/smart-order-router'
 import { TokenList } from '@uniswap/token-lists'
 import { default as bunyan, default as Logger } from 'bunyan'
 import _ from 'lodash'
@@ -54,8 +54,8 @@ import { DefaultEVMClient } from './evm/EVMClient'
 import { InstrumentedEVMProvider } from './evm/provider/InstrumentedEVMProvider'
 import { deriveProviderName } from './evm/provider/ProviderName'
 import { V2DynamoCache } from './pools/pool-caching/v2/v2-dynamo-cache'
-import { OnChainTokenFeeFetcher } from '@uniswap/smart-order-router/build/main/providers/token-fee-fetcher'
-import { PortionProvider } from '@uniswap/smart-order-router/build/main/providers/portion-provider'
+import { OnChainTokenFeeFetcher } from '@taraswap/smart-order-router/build/main/providers/token-fee-fetcher'
+import { PortionProvider } from '@taraswap/smart-order-router/build/main/providers/portion-provider'
 import { GlobalRpcProviders } from '../rpc/GlobalRpcProviders'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { TrafficSwitchOnChainQuoteProvider } from './quote/provider-migration/v3/traffic-switch-on-chain-quote-provider'
@@ -69,7 +69,7 @@ import {
 } from '../util/onChainQuoteProviderConfigs'
 import { v4 } from 'uuid/index'
 import { chainProtocols } from '../cron/cache-config'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@taraswap/router-sdk'
 import { UniJsonRpcProvider } from '../rpc/UniJsonRpcProvider'
 
 export const SUPPORTED_CHAINS: ChainId[] = [
@@ -86,6 +86,7 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.BLAST,
   ChainId.ZORA,
   ChainId.ZKSYNC,
+  ChainId.TARAXA_TESTNET,
 ]
 const DEFAULT_TOKEN_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
 

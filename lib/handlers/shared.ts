@@ -1,13 +1,13 @@
-import { ChainId, Currency, CurrencyAmount, Percent } from '@uniswap/sdk-core'
+import { ChainId, Currency, CurrencyAmount, Percent } from '@taraswap/sdk-core'
 import {
   AlphaRouterConfig,
   CacheMode,
   LowerCaseStringArray,
   MapWithLowerCaseKey,
   ProtocolPoolSelection,
-} from '@uniswap/smart-order-router'
-import { FeeOptions } from '@uniswap/v3-sdk'
-import { FlatFeeOptions } from '@uniswap/universal-router-sdk'
+} from '@taraswap/smart-order-router'
+import { FeeOptions } from '@taraswap/v3-sdk'
+import { FlatFeeOptions } from '@taraswap/universal-router-sdk'
 
 export const SECONDS_PER_BLOCK_BY_CHAIN_ID: { [chainId in ChainId]?: number } = {
   [ChainId.MAINNET]: 30,
@@ -16,6 +16,7 @@ export const SECONDS_PER_BLOCK_BY_CHAIN_ID: { [chainId in ChainId]?: number } = 
 export const DEFAULT_ROUTING_CONFIG_BY_CHAIN = (chainId: ChainId): AlphaRouterConfig => {
   switch (chainId) {
     case ChainId.BASE:
+    case ChainId.TARAXA_TESTNET: //todo
     case ChainId.OPTIMISM:
       return {
         v2PoolSelection: {

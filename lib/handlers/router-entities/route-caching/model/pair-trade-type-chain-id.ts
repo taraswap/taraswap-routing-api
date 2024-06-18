@@ -1,5 +1,5 @@
-import { ChainId, TradeType } from '@uniswap/sdk-core'
-import { CachedRoutes } from '@uniswap/smart-order-router'
+import { ChainId, TradeType } from '@taraswap/sdk-core'
+import { CachedRoutes } from '@taraswap/smart-order-router'
 
 interface PairTradeTypeChainIdArgs {
   tokenIn: string

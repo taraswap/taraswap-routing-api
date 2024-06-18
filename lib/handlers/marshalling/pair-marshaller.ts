@@ -1,6 +1,6 @@
-import { Pair } from '@uniswap/v2-sdk'
+import { Pair } from '@taraswap/v2-sdk'
 import { CurrencyAmountMarshaller, MarshalledCurrencyAmount } from './currency-amount-marshaller'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@taraswap/router-sdk'
 
 export interface MarshalledPair {
   protocol: Protocol

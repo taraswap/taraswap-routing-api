@@ -1,4 +1,4 @@
-import { ChainId, TradeType } from '@uniswap/sdk-core'
+import { ChainId, TradeType } from '@taraswap/sdk-core'
 
 export const PAIRS_TO_TRACK: Map<ChainId, Map<TradeType, string[]>> = new Map([
   [
@@ -33,4 +33,11 @@ export const PAIRS_TO_TRACK: Map<ChainId, Map<TradeType, string[]>> = new Map([
     ]),
   ],
   [ChainId.CELO, new Map([[TradeType.EXACT_OUTPUT, ['*/CELO']]])],
+  [
+    ChainId.TARAXA_TESTNET,
+    new Map([
+      [TradeType.EXACT_INPUT, ['WTARA/USDT', 'USDT/WTARA']],
+      [TradeType.EXACT_OUTPUT, ['*/WTARA']],
+    ]),
+  ],
 ])

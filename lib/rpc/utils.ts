@@ -1,4 +1,4 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@taraswap/sdk-core'
 
 export function chainIdToNetworkName(networkId: ChainId): string {
   switch (networkId) {
@@ -18,6 +18,8 @@ export function chainIdToNetworkName(networkId: ChainId): string {
       return 'avalanchec'
     case ChainId.BASE:
       return 'base'
+    case ChainId.TARAXA_TESTNET:
+      return 'taraxa-testnet'
     default:
       return 'ethereum'
   }

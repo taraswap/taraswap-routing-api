@@ -1,8 +1,8 @@
-import { Protocol } from '@uniswap/router-sdk'
-import { setGlobalLogger, setGlobalMetric, V2SubgraphProvider, V3SubgraphProvider } from '@uniswap/smart-order-router'
+import { Protocol } from '@taraswap/router-sdk'
+import { setGlobalLogger, setGlobalMetric, V2SubgraphProvider, V3SubgraphProvider } from '@taraswap/smart-order-router'
 import { EventBridgeEvent, ScheduledHandler } from 'aws-lambda'
 import { S3 } from 'aws-sdk'
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@taraswap/sdk-core'
 import { default as bunyan, default as Logger } from 'bunyan'
 import { S3_POOL_CACHE_KEY } from '../util/pool-cache-key'
 import {

@@ -1,6 +1,6 @@
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { AllowanceTransfer, PermitSingle } from '@uniswap/permit2-sdk'
-import { ChainId, Currency, CurrencyAmount, Ether, Fraction, Rounding, Token, WETH9 } from '@uniswap/sdk-core'
+import { AllowanceTransfer, PermitSingle } from '@taraswap/permit2-sdk'
+import { ChainId, Currency, CurrencyAmount, Ether, Fraction, Rounding, Token, WETH9 } from '@taraswap/sdk-core'
 import {
   CEUR_CELO,
   CEUR_CELO_ALFAJORES,
@@ -8,6 +8,7 @@ import {
   CUSD_CELO_ALFAJORES,
   DAI_MAINNET,
   ID_TO_NETWORK_NAME,
+  MethodParameters,
   NATIVE_CURRENCY,
   parseAmount,
   SWAP_ROUTER_02_ADDRESSES,
@@ -20,13 +21,14 @@ import {
   USDC_NATIVE_OPTIMISM,
   USDC_NATIVE_POLYGON,
   USDT_MAINNET,
+  USDT_TESTNET,
   WBTC_MAINNET,
-} from '@uniswap/smart-order-router'
+  WTARA_TESTNET,
+} from '@taraswap/smart-order-router'
 import {
   PERMIT2_ADDRESS,
   UNIVERSAL_ROUTER_ADDRESS as UNIVERSAL_ROUTER_ADDRESS_BY_CHAIN,
-} from '@uniswap/universal-router-sdk'
-import { MethodParameters } from '@uniswap/smart-order-router'
+} from '@taraswap/universal-router-sdk'
 import { fail } from 'assert'
 import axiosStatic, { AxiosResponse } from 'axios'
 import axiosRetry from 'axios-retry'
@@ -45,7 +47,7 @@ import { resetAndFundAtBlock } from '../../utils/forkAndFund'
 import { getBalance, getBalanceAndApprove } from '../../utils/getBalanceAndApprove'
 import { DAI_ON, getAmount, getAmountFromToken, UNI_MAINNET, USDC_ON, USDT_ON, WNATIVE_ON } from '../../utils/tokens'
 import { FLAT_PORTION, GREENLIST_TOKEN_PAIRS, Portion } from '../../test-utils/mocked-data'
-import { WRAPPED_NATIVE_CURRENCY } from '@uniswap/smart-order-router/build/main/index'
+import { WRAPPED_NATIVE_CURRENCY } from '@taraswap/smart-order-router/build/main/index'
 
 const { ethers } = hre
 
@@ -2473,6 +2475,7 @@ describe('quote', function () {
     [ChainId.ROOTSTOCK]: () => USDC_ON(ChainId.ROOTSTOCK),
     [ChainId.BLAST]: () => USDB_BLAST,
     [ChainId.ZKSYNC]: () => USDC_ON(ChainId.ZKSYNC),
+    [ChainId.TARAXA_TESTNET]: () => USDT_TESTNET,
   }
 
   const TEST_ERC20_2: { [chainId in ChainId]: () => Token | null } = {
@@ -2500,6 +2503,7 @@ describe('quote', function () {
     [ChainId.ROOTSTOCK]: () => WNATIVE_ON(ChainId.ROOTSTOCK),
     [ChainId.BLAST]: () => WNATIVE_ON(ChainId.BLAST),
     [ChainId.ZKSYNC]: () => WNATIVE_ON(ChainId.ZKSYNC),
+    [ChainId.TARAXA_TESTNET]: () => WTARA_TESTNET,
   }
 
   // TODO: Find valid pools/tokens on optimistic kovan and polygon mumbai. We skip those tests for now.

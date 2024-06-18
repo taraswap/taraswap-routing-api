@@ -1,9 +1,7 @@
-import { ChainId } from '@uniswap/sdk-core'
+import { ChainId } from '@taraswap/sdk-core'
 import * as cdk from 'aws-cdk-lib'
 import { CfnOutput, SecretValue, Stack, StackProps, Stage, StageProps } from 'aws-cdk-lib'
-import * as chatbot from 'aws-cdk-lib/aws-chatbot'
 import { BuildEnvironmentVariableType } from 'aws-cdk-lib/aws-codebuild'
-import { PipelineNotificationEvents } from 'aws-cdk-lib/aws-codepipeline'
 import * as sm from 'aws-cdk-lib/aws-secretsmanager'
 import { CodeBuildStep, CodePipeline, CodePipelineSource } from 'aws-cdk-lib/pipelines'
 import { Construct } from 'constructs'
@@ -237,24 +235,28 @@ export class RoutingAPIPipeline extends Stack {
     }
 
     // Beta us-east-2
-    const betaUsEast2Stage = new RoutingAPIStage(this, 'beta-us-east-2', {
-      env: { account: '145079444317', region: 'us-east-2' },
+    const betaUsEast2Stage = new RoutingAPIStage(this, 'beta-eu-central-1', {
+      env: { account: '339713033026', region: 'eu-central-1' },
       jsonRpcProviders: jsonRpcProviders,
-      internalApiKey: internalApiKey.secretValue.toString(),
+      internalApiKey: internalApiKey.secretValue.toString() || 'api-key',
       provisionedConcurrency: 1,
-      ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString(),
+      ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString() || 'https://ethgasstation.info',
       stage: STAGE.BETA,
-      route53Arn: route53Arn.secretValueFromJson('arn').toString(),
-      pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString(),
-      pinata_secret: pinataSecret.secretValueFromJson('secret').toString(),
-      hosted_zone: hostedZone.secretValueFromJson('zone').toString(),
-      tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString(),
-      tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString(),
-      tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString(),
-      tenderlyNodeApiKey: tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString(),
-      unicornSecret: unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString(),
-      alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString(),
-      decentralizedNetworkApiKey: routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString(),
+      route53Arn: route53Arn.secretValueFromJson('arn').toString() || 'arn',
+      pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString() || 'pinata-api-key',
+      pinata_secret: pinataSecret.secretValueFromJson('secret').toString() || 'pinata',
+      hosted_zone: hostedZone.secretValueFromJson('zone').toString() || 'hosted-zone',
+      tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString() || 'tenderly-user',
+      tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString() || 'tenderly-project',
+      tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString() || 'tenderly-access-key',
+      tenderlyNodeApiKey:
+        tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString() || 'tenderly-node-api-key',
+      unicornSecret:
+        unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString() || 'debug-config-unicorn-key',
+      alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString() || 'alchemy-query-key',
+      decentralizedNetworkApiKey:
+        routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString() ||
+        'decentralized-network-api-key',
     })
 
     const betaUsEast2AppStage = pipeline.addStage(betaUsEast2Stage)
@@ -262,41 +264,34 @@ export class RoutingAPIPipeline extends Stack {
     this.addIntegTests(code, betaUsEast2Stage, betaUsEast2AppStage)
 
     // Prod us-east-2
-    const prodUsEast2Stage = new RoutingAPIStage(this, 'prod-us-east-2', {
-      env: { account: '606857263320', region: 'us-east-2' },
+    const prodUsEast2Stage = new RoutingAPIStage(this, 'prod-eu-central-1', {
+      env: { account: '339713033026', region: 'eu-central-1' },
       jsonRpcProviders: jsonRpcProviders,
-      internalApiKey: internalApiKey.secretValue.toString(),
+      internalApiKey: internalApiKey.secretValue.toString() || 'api-key',
       provisionedConcurrency: 70,
       ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString(),
       chatbotSNSArn: 'arn:aws:sns:us-east-2:644039819003:SlackChatbotTopic',
       stage: STAGE.PROD,
-      route53Arn: route53Arn.secretValueFromJson('arn').toString(),
-      pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString(),
-      pinata_secret: pinataSecret.secretValueFromJson('secret').toString(),
-      hosted_zone: hostedZone.secretValueFromJson('zone').toString(),
-      tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString(),
-      tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString(),
-      tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString(),
-      tenderlyNodeApiKey: tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString(),
-      unicornSecret: unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString(),
-      alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString(),
-      decentralizedNetworkApiKey: routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString(),
+      route53Arn: route53Arn.secretValueFromJson('arn').toString() || 'arn',
+      pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString() || 'pinata-api-key',
+      pinata_secret: pinataSecret.secretValueFromJson('secret').toString() || 'pinata',
+      hosted_zone: hostedZone.secretValueFromJson('zone').toString() || 'hosted-zone',
+      tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString() || 'tenderly-user',
+      tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString() || 'tenderly-project',
+      tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString() || 'tenderly-access-key',
+      tenderlyNodeApiKey:
+        tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString() || 'tenderly-node-api-key',
+      unicornSecret:
+        unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString() || 'debug-config-unicorn-key',
+      alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString() || 'alchemy-query-key',
+      decentralizedNetworkApiKey:
+        routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString() ||
+        'decentralized-network-api-key',
     })
 
     const prodUsEast2AppStage = pipeline.addStage(prodUsEast2Stage)
 
     this.addIntegTests(code, prodUsEast2Stage, prodUsEast2AppStage)
-
-    const slackChannel = chatbot.SlackChannelConfiguration.fromSlackChannelConfigurationArn(
-      this,
-      'SlackChannel',
-      'arn:aws:chatbot::644039819003:chat-configuration/slack-channel/eng-ops-slack-chatbot'
-    )
-
-    pipeline.buildPipeline()
-    pipeline.pipeline.notifyOn('NotifySlack', slackChannel, {
-      events: [PipelineNotificationEvents.PIPELINE_EXECUTION_FAILED],
-    })
   }
 
   private addIntegTests(
@@ -353,6 +348,7 @@ const jsonRpcProviders = {
   WEB3_RPC_56: process.env.WEB3_RPC_56!,
   WEB3_RPC_8453: process.env.WEB3_RPC_8453!,
   WEB3_RPC_324: process.env.WEB3_RPC_324!,
+  WEB3_RPC_842: process.env.WEB3_RPC_842!,
   // The followings are for RPC Gateway
   // Optimism
   // INFURA_10: process.env.INFURA_10!,
@@ -420,5 +416,5 @@ new RoutingAPIStack(app, 'RoutingAPIStack', {
 })
 
 new RoutingAPIPipeline(app, 'RoutingAPIPipelineStack', {
-  env: { account: '644039819003', region: 'us-east-2' },
+  env: { account: '339713033026', region: 'eu-central-1' },
 })
