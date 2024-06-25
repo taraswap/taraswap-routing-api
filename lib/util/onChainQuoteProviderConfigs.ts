@@ -372,7 +372,8 @@ export const NEW_QUOTER_DEPLOY_BLOCK: { [chainId in ChainId]: number } = {
   [ChainId.BLAST]: 2370179,
   [ChainId.ZKSYNC]: 35982078,
   [ChainId.ROOTSTOCK]: -1,
-  [ChainId.TARAXA_TESTNET]: -1,
+  [ChainId.TARAXA_TESTNET]: 571923,
+  [ChainId.TARAXA]: 571923, //todo: replace after deployment
 }
 
 // 0 threshold means it's not deployed yet
@@ -402,6 +403,7 @@ export const LIKELY_OUT_OF_GAS_THRESHOLD: { [chainId in ChainId]: number } = {
   [ChainId.BLAST]: 17540 * 2, // 17540 is the single tick.cross cost on blast. We multiply by 2 to be safe,
   [ChainId.ZKSYNC]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
   [ChainId.TARAXA_TESTNET]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
+  [ChainId.TARAXA]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
 }
 
 // TODO: Move this new addresses to SOR

@@ -21,8 +21,10 @@ import {
   USDC_NATIVE_OPTIMISM,
   USDC_NATIVE_POLYGON,
   USDT_MAINNET,
-  USDT_TESTNET,
+  USDT_TARAXA,
+  USDT_TARAXA_TESTNET,
   WBTC_MAINNET,
+  WTARA,
   WTARA_TESTNET,
 } from '@taraswap/smart-order-router'
 import {
@@ -2475,7 +2477,8 @@ describe('quote', function () {
     [ChainId.ROOTSTOCK]: () => USDC_ON(ChainId.ROOTSTOCK),
     [ChainId.BLAST]: () => USDB_BLAST,
     [ChainId.ZKSYNC]: () => USDC_ON(ChainId.ZKSYNC),
-    [ChainId.TARAXA_TESTNET]: () => USDT_TESTNET,
+    [ChainId.TARAXA_TESTNET]: () => USDT_TARAXA_TESTNET,
+    [ChainId.TARAXA]: () => USDT_TARAXA,
   }
 
   const TEST_ERC20_2: { [chainId in ChainId]: () => Token | null } = {
@@ -2504,6 +2507,7 @@ describe('quote', function () {
     [ChainId.BLAST]: () => WNATIVE_ON(ChainId.BLAST),
     [ChainId.ZKSYNC]: () => WNATIVE_ON(ChainId.ZKSYNC),
     [ChainId.TARAXA_TESTNET]: () => WTARA_TESTNET,
+    [ChainId.TARAXA]: () => WTARA,
   }
 
   // TODO: Find valid pools/tokens on optimistic kovan and polygon mumbai. We skip those tests for now.

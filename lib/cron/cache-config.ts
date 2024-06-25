@@ -190,6 +190,18 @@ export const chainProtocols = [
       v3SubgraphUrlOverride(ChainId.BLAST)
     ),
   },
+  {
+    protocol: Protocol.V3,
+    chainId: ChainId.TARAXA_TESTNET,
+    timeout: 90000,
+    provider: new V3SubgraphProvider(ChainId.TARAXA_TESTNET, 3, 90000),
+  },
+  {
+    protocol: Protocol.V3,
+    chainId: ChainId.TARAXA,
+    timeout: 90000,
+    provider: new V3SubgraphProvider(ChainId.TARAXA, 3, 90000),
+  },
 
   // V2.
   {
@@ -311,11 +323,5 @@ export const chainProtocols = [
       v2UntrackedUsdThreshold,
       v2SubgraphUrlOverride(ChainId.BLAST)
     ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.TARAXA_TESTNET,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(ChainId.TARAXA_TESTNET, 3, 90000),
   },
 ]
