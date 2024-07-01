@@ -23,6 +23,8 @@ const ID_TO_PROVIDER = (id: ChainId): string => {
       return ProviderName.QUIKNODE
     case ChainId.CELO_ALFAJORES:
       return ProviderName.FORNO
+    case ChainId.TARAXA:
+      return ProviderName.TARAXA
     case ChainId.TARAXA_TESTNET:
       return ProviderName.TARAXA
     default:

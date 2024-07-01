@@ -20,6 +20,8 @@ export function chainIdToNetworkName(networkId: ChainId): string {
       return 'base'
     case ChainId.TARAXA_TESTNET:
       return 'taraxa-testnet'
+    case ChainId.TARAXA:
+      return 'taraxa'
     default:
       return 'ethereum'
   }

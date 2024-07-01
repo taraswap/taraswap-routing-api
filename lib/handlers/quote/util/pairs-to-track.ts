@@ -40,4 +40,11 @@ export const PAIRS_TO_TRACK: Map<ChainId, Map<TradeType, string[]>> = new Map([
       [TradeType.EXACT_OUTPUT, ['*/WTARA']],
     ]),
   ],
+  [
+    ChainId.TARAXA,
+    new Map([
+      [TradeType.EXACT_INPUT, ['WTARA/USDT', 'USDT/WTARA']],
+      [TradeType.EXACT_OUTPUT, ['*/WTARA']],
+    ]),
+  ],
 ])
