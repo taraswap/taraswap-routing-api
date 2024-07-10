@@ -87,7 +87,7 @@
     "@taraswap/router-sdk": "^1.1.6",
     "@taraswap/sdk-core": "^1.4.2",
     "@types/semver": "^7.5.8",
-    "@taraswap/smart-order-router": "4.0.6",
+    "@taraswap/smart-order-router": "^4.1.0",
     "@uniswap/token-lists": "^1.0.0-beta.33",
     "@taraswap/universal-router-sdk": "^1.1.11",
     "@taraswap/v2-sdk": "^1.1.3",
