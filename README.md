@@ -45,16 +45,23 @@ The best way to develop and test the API is to deploy your own instance to AWS.
    npm install && npm run build
    ```
 4. To deploy the API run:
+
    ```
    cdk deploy RoutingAPIStack
    ```
+
    This will deploy to the default account your AWS CLI is configured for. Once complete it will output something like:
+
    ```
    RoutingAPIStack.Url = https://...
    ```
+
    You can then try it out:
+
    ```
    curl --request GET '<INSERT_YOUR_URL_HERE>/quote?tokenInAddress=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&tokenInChainId=1&tokenOutAddress=0x1f9840a85d5af5bf1d1762f925bdaddc4201f984&tokenOutChainId=1&amount=100&type=exactIn'
+
+   curl --request GET 'https://p7oxollac7.execute-api.us-east-1.amazonaws.com/prod/quote?tokenInAddress=0x30c708a962641b223b6b78237a402faed9860fc2&tokenInChainId=842&tokenOutAddress=0xcd89db7e3e32d8d273532814c9c94868db6a8642&tokenOutChainId=842&amount=1000&type=exactIn'
    ```
 
 ### Tenderly Simulation

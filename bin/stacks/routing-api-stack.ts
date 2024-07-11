@@ -154,7 +154,14 @@ export class RoutingAPIStack extends cdk.Stack {
       defaultCorsPreflightOptions: {
         allowOrigins: aws_apigateway.Cors.ALL_ORIGINS,
         allowMethods: aws_apigateway.Cors.ALL_METHODS,
-        allowHeaders: aws_apigateway.Cors.DEFAULT_HEADERS.concat('X-Request-Source'),
+        allowHeaders: aws_apigateway.Cors.DEFAULT_HEADERS.concat([
+          'X-Request-Source',
+          'access-control-allow-origin',
+          'X-Amz-Date',
+          'Authorization',
+          'X-Api-Key',
+          'X-Amz-Security-Token',
+        ]),
       },
     })
 
@@ -253,7 +260,14 @@ export class RoutingAPIStack extends cdk.Stack {
       defaultCorsPreflightOptions: {
         allowOrigins: aws_apigateway.Cors.ALL_ORIGINS,
         allowMethods: aws_apigateway.Cors.ALL_METHODS,
-        allowHeaders: aws_apigateway.Cors.DEFAULT_HEADERS.concat('X-Request-Source'),
+        allowHeaders: aws_apigateway.Cors.DEFAULT_HEADERS.concat([
+          'X-Request-Source',
+          'access-control-allow-origin',
+          'X-Amz-Date',
+          'Authorization',
+          'X-Api-Key',
+          'X-Amz-Security-Token',
+        ]),
       },
     })
     quote.addMethod('GET', lambdaIntegration)

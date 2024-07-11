@@ -134,6 +134,12 @@ export function generateProviderUrl(key: string, value: string): string {
     case 'ALCHEMY_324': {
       return `https://zksync-mainnet.g.alchemy.com/v2/${tokens[0]}`
     }
+    case 'TARAXA_841': {
+      return `https://rpc.mainnet.taraxa.io`
+    }
+    case 'TARAXA_842': {
+      return `https://rpc.testnet.taraxa.io`
+    }
   }
   throw new Error(`Unknown provider-chainId pair: ${key}`)
 }

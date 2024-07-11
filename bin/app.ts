@@ -184,48 +184,50 @@ export class RoutingAPIPipeline extends Stack {
     const RPC_GATEWAY_PROVIDERS = [
       // Optimism
       // 'INFURA_10',
-      'QUICKNODE_10',
-      'ALCHEMY_10',
+      // 'QUICKNODE_10',
+      // 'ALCHEMY_10',
       // Polygon
-      'QUICKNODE_137',
+      // 'QUICKNODE_137',
       // 'INFURA_137',
-      'ALCHEMY_137',
+      // 'ALCHEMY_137',
       // Celo
-      'QUICKNODE_42220',
+      // 'QUICKNODE_42220',
       // 'INFURA_42220',
       // Avalanche
       // 'INFURA_43114',
-      'QUICKNODE_43114',
-      'NIRVANA_43114',
+      // 'QUICKNODE_43114',
+      // 'NIRVANA_43114',
       // BNB
-      'QUICKNODE_56',
+      // 'QUICKNODE_56',
       // Base
-      'QUICKNODE_8453',
+      // 'QUICKNODE_8453',
       // 'INFURA_8453',
-      'ALCHEMY_8453',
-      'NIRVANA_8453',
+      // 'ALCHEMY_8453',
+      // 'NIRVANA_8453',
       // Sepolia
       // 'INFURA_11155111',
-      'ALCHEMY_11155111',
+      // 'ALCHEMY_11155111',
       // Arbitrum
       // 'INFURA_42161',
-      'QUICKNODE_42161',
-      'NIRVANA_42161',
-      'ALCHEMY_42161',
+      // 'QUICKNODE_42161',
+      // 'NIRVANA_42161',
+      // 'ALCHEMY_42161',
       // Ethereum
       // 'INFURA_1',
-      'QUICKNODE_1',
-      'NIRVANA_1',
-      'ALCHEMY_1',
-      'QUICKNODERETH_1',
+      // 'QUICKNODE_1',
+      // 'NIRVANA_1',
+      // 'ALCHEMY_1',
+      // 'QUICKNODERETH_1',
       // Blast
-      'QUICKNODE_81457',
+      // 'QUICKNODE_81457',
       // 'INFURA_81457',
       // ZORA
-      'QUICKNODE_7777777',
+      // 'QUICKNODE_7777777',
       // ZkSync
-      'QUICKNODE_324',
-      'ALCHEMY_324',
+      // 'QUICKNODE_324',
+      // 'ALCHEMY_324',
+      'TARAXA_841',
+      'TARAXA_842',
     ]
     for (const provider of RPC_GATEWAY_PROVIDERS) {
       jsonRpcProviders[provider] = jsonRpcProvidersSecret.secretValueFromJson(provider).toString()
@@ -270,7 +272,7 @@ export class RoutingAPIPipeline extends Stack {
       internalApiKey: internalApiKey.secretValue.toString() || 'api-key',
       provisionedConcurrency: 70,
       ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString(),
-      chatbotSNSArn: 'arn:aws:sns:us-east-2:644039819003:SlackChatbotTopic',
+      // chatbotSNSArn: 'SlackChatbotTopic',
       stage: STAGE.PROD,
       route53Arn: route53Arn.secretValueFromJson('arn').toString() || 'arn',
       pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString() || 'pinata-api-key',
@@ -334,66 +336,68 @@ export class RoutingAPIPipeline extends Stack {
 const app = new cdk.App()
 
 const jsonRpcProviders = {
-  WEB3_RPC_1: process.env.WEB3_RPC_1!,
-  WEB3_RPC_11155111: process.env.WEB3_RPC_11155111!,
-  WEB3_RPC_44787: process.env.WEB3_RPC_44787!,
-  WEB3_RPC_80001: process.env.WEB3_RPC_80001!,
-  WEB3_RPC_81457: process.env.WEB3_RPC_81457!,
-  WEB3_RPC_42161: process.env.WEB3_RPC_42161!,
-  WEB3_RPC_421613: process.env.WEB3_RPC_421613!,
-  WEB3_RPC_10: process.env.WEB3_RPC_10!,
-  WEB3_RPC_137: process.env.WEB3_RPC_137!,
-  WEB3_RPC_42220: process.env.WEB3_RPC_42220!,
-  WEB3_RPC_43114: process.env.WEB3_RPC_43114!,
-  WEB3_RPC_56: process.env.WEB3_RPC_56!,
-  WEB3_RPC_8453: process.env.WEB3_RPC_8453!,
-  WEB3_RPC_324: process.env.WEB3_RPC_324!,
-  WEB3_RPC_842: process.env.WEB3_RPC_842!,
-  WEB3_RPC_841: process.env.WEB3_RPC_841!,
-  // The followings are for RPC Gateway
-  // Optimism
-  // INFURA_10: process.env.INFURA_10!,
-  QUICKNODE_10: process.env.QUICKNODE_10!,
-  ALCHEMY_10: process.env.ALCHEMY_10!,
-  // Polygon
-  QUICKNODE_137: process.env.QUICKNODE_137!,
-  // INFURA_137: process.env.INFURA_137!,
-  ALCHEMY_137: process.env.ALCHEMY_137!,
-  // Celo
-  QUICKNODE_42220: process.env.QUICKNODE_42220!,
-  // INFURA_42220: process.env.INFURA_42220!,
-  // Avalanche
-  // INFURA_43114: process.env.INFURA_43114!,
-  QUICKNODE_43114: process.env.QUICKNODE_43114!,
-  NIRVANA_43114: process.env.NIRVANA_43114!,
-  // BNB
-  QUICKNODE_56: process.env.QUICKNODE_56!,
-  // Base
-  QUICKNODE_8453: process.env.QUICKNODE_8453!,
-  // INFURA_8453: process.env.INFURA_8453!,
-  ALCHEMY_8453: process.env.ALCHEMY_8453!,
-  NIRVANA_8453: process.env.NIRVANA_8453!,
-  // Sepolia
-  // INFURA_11155111: process.env.INFURA_11155111!,
-  ALCHEMY_11155111: process.env.ALCHEMY_11155111!,
-  // Arbitrum
-  // INFURA_42161: process.env.INFURA_42161!,
-  QUICKNODE_42161: process.env.QUICKNODE_42161!,
-  NIRVANA_42161: process.env.NIRVANA_42161!,
-  ALCHEMY_42161: process.env.ALCHEMY_42161!,
-  // Ethereum
-  // INFURA_1: process.env.INFURA_1!,
-  QUICKNODE_1: process.env.QUICKNODE_1!,
-  NIRVANA_1: process.env.NIRVANA_1!,
-  ALCHEMY_1: process.env.ALCHEMY_1!,
-  // Blast
-  QUICKNODE_81457: process.env.QUICKNODE_81457!,
-  // INFURA_81457: process.env.INFURA_81457!,
-  // Zora
-  QUICKNODE_7777777: process.env.QUICKNODE_7777777!,
-  // ZkSync
-  QUICKNODE_324: process.env.QUICKNODE_324!,
-  ALCHEMY_324: process.env.ALCHEMY_324!,
+  // WEB3_RPC_1: process.env.WEB3_RPC_1!,
+  // WEB3_RPC_11155111: process.env.WEB3_RPC_11155111!,
+  // WEB3_RPC_44787: process.env.WEB3_RPC_44787!,
+  // WEB3_RPC_80001: process.env.WEB3_RPC_80001!,
+  // WEB3_RPC_81457: process.env.WEB3_RPC_81457!,
+  // WEB3_RPC_42161: process.env.WEB3_RPC_42161!,
+  // WEB3_RPC_421613: process.env.WEB3_RPC_421613!,
+  // WEB3_RPC_10: process.env.WEB3_RPC_10!,
+  // WEB3_RPC_137: process.env.WEB3_RPC_137!,
+  // WEB3_RPC_42220: process.env.WEB3_RPC_42220!,
+  // WEB3_RPC_43114: process.env.WEB3_RPC_43114!,
+  // WEB3_RPC_56: process.env.WEB3_RPC_56!,
+  // WEB3_RPC_8453: process.env.WEB3_RPC_8453!,
+  // WEB3_RPC_324: process.env.WEB3_RPC_324!,
+  WEB3_RPC_842: 'https://rpc.testnet.taraxa.io',
+  WEB3_RPC_841: 'https://rpc.mainnet.taraxa.io',
+  // // The followings are for RPC Gateway
+  // // Optimism
+  // // INFURA_10: process.env.INFURA_10!,
+  // QUICKNODE_10: process.env.QUICKNODE_10!,
+  // ALCHEMY_10: process.env.ALCHEMY_10!,
+  // // Polygon
+  // QUICKNODE_137: process.env.QUICKNODE_137!,
+  // // INFURA_137: process.env.INFURA_137!,
+  // ALCHEMY_137: process.env.ALCHEMY_137!,
+  // // Celo
+  // QUICKNODE_42220: process.env.QUICKNODE_42220!,
+  // // INFURA_42220: process.env.INFURA_42220!,
+  // // Avalanche
+  // // INFURA_43114: process.env.INFURA_43114!,
+  // QUICKNODE_43114: process.env.QUICKNODE_43114!,
+  // NIRVANA_43114: process.env.NIRVANA_43114!,
+  // // BNB
+  // QUICKNODE_56: process.env.QUICKNODE_56!,
+  // // Base
+  // QUICKNODE_8453: process.env.QUICKNODE_8453!,
+  // // INFURA_8453: process.env.INFURA_8453!,
+  // ALCHEMY_8453: process.env.ALCHEMY_8453!,
+  // NIRVANA_8453: process.env.NIRVANA_8453!,
+  // // Sepolia
+  // // INFURA_11155111: process.env.INFURA_11155111!,
+  // ALCHEMY_11155111: process.env.ALCHEMY_11155111!,
+  // // Arbitrum
+  // // INFURA_42161: process.env.INFURA_42161!,
+  // QUICKNODE_42161: process.env.QUICKNODE_42161!,
+  // NIRVANA_42161: process.env.NIRVANA_42161!,
+  // ALCHEMY_42161: process.env.ALCHEMY_42161!,
+  // // Ethereum
+  // // INFURA_1: process.env.INFURA_1!,
+  // QUICKNODE_1: process.env.QUICKNODE_1!,
+  // NIRVANA_1: process.env.NIRVANA_1!,
+  // ALCHEMY_1: process.env.ALCHEMY_1!,
+  // // Blast
+  // QUICKNODE_81457: process.env.QUICKNODE_81457!,
+  // // INFURA_81457: process.env.INFURA_81457!,
+  // // Zora
+  // QUICKNODE_7777777: process.env.QUICKNODE_7777777!,
+  // // ZkSync
+  // QUICKNODE_324: process.env.QUICKNODE_324!,
+  // ALCHEMY_324: process.env.ALCHEMY_324!,
+  TARAXA_842: 'https://rpc.testnet.taraxa.io',
+  TARAXA_841: 'https://rpc.mainnet.taraxa.io',
 }
 
 // Local dev stack

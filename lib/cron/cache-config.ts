@@ -1,5 +1,5 @@
 import { Protocol } from '@taraswap/router-sdk'
-import { V2SubgraphProvider, V3SubgraphProvider } from '@taraswap/smart-order-router'
+import { V3SubgraphProvider } from '@taraswap/smart-order-router'
 import { ChainId } from '@taraswap/sdk-core'
 
 // during local cdk stack update, the env vars are not populated
@@ -56,140 +56,140 @@ export const v2SubgraphUrlOverride = (chainId: ChainId) => {
 }
 
 export const v3TrackedEthThreshold = 0.01 // Pools need at least 0.01 of trackedEth to be selected
-const v3UntrackedUsdThreshold = 25000 // Pools need at least 25K USD (untracked) to be selected (for metrics only)
+// const v3UntrackedUsdThreshold = 25000 // Pools need at least 25K USD (untracked) to be selected (for metrics only)
 
 export const v2TrackedEthThreshold = 0.025 // Pairs need at least 0.025 of trackedEth to be selected
-const v2UntrackedUsdThreshold = Number.MAX_VALUE // Pairs need at least 1K USD (untracked) to be selected (for metrics only)
+// const v2UntrackedUsdThreshold = Number.MAX_VALUE // Pairs need at least 1K USD (untracked) to be selected (for metrics only)
 
 export const chainProtocols = [
   // V3.
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.MAINNET,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.MAINNET,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.MAINNET)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.ARBITRUM_ONE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.ARBITRUM_ONE,
-      5,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.ARBITRUM_ONE)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.POLYGON,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.POLYGON,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.POLYGON)
-    ),
-  },
-  // Waiting for Alchemy subgraph
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.OPTIMISM,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.OPTIMISM,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.OPTIMISM)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.CELO,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.CELO,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.CELO)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.BNB,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.BNB,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.BNB)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.AVALANCHE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.AVALANCHE,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.AVALANCHE)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.BASE,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.BASE,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.BASE)
-    ),
-  },
-  {
-    protocol: Protocol.V3,
-    chainId: ChainId.BLAST,
-    timeout: 90000,
-    provider: new V3SubgraphProvider(
-      ChainId.BLAST,
-      3,
-      90000,
-      true,
-      v3TrackedEthThreshold,
-      v3UntrackedUsdThreshold,
-      v3SubgraphUrlOverride(ChainId.BLAST)
-    ),
-  },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.MAINNET,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.MAINNET,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.MAINNET)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.ARBITRUM_ONE,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.ARBITRUM_ONE,
+  //     5,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.ARBITRUM_ONE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.POLYGON,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.POLYGON,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.POLYGON)
+  //   ),
+  // },
+  // // Waiting for Alchemy subgraph
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.OPTIMISM,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.OPTIMISM,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.OPTIMISM)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.CELO,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.CELO,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.CELO)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.BNB,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.BNB,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.BNB)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.AVALANCHE,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.AVALANCHE,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.AVALANCHE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.BASE,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.BASE,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.BASE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V3,
+  //   chainId: ChainId.BLAST,
+  //   timeout: 90000,
+  //   provider: new V3SubgraphProvider(
+  //     ChainId.BLAST,
+  //     3,
+  //     90000,
+  //     true,
+  //     v3TrackedEthThreshold,
+  //     v3UntrackedUsdThreshold,
+  //     v3SubgraphUrlOverride(ChainId.BLAST)
+  //   ),
+  // },
   {
     protocol: Protocol.V3,
     chainId: ChainId.TARAXA_TESTNET,
@@ -204,124 +204,124 @@ export const chainProtocols = [
   },
 
   // V2.
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.MAINNET,
-    timeout: 840000,
-    provider: new V2SubgraphProvider(
-      ChainId.MAINNET,
-      5,
-      900000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.MAINNET)
-    ), // 1000 is the largest page size supported by thegraph
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.ARBITRUM_ONE,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.ARBITRUM_ONE,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.ARBITRUM_ONE)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.POLYGON,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.POLYGON,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.POLYGON)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.OPTIMISM,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.OPTIMISM,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.OPTIMISM)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.BNB,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.BNB,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.BNB)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.AVALANCHE,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.AVALANCHE,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.AVALANCHE)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.BASE,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.BASE,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.BASE)
-    ),
-  },
-  {
-    protocol: Protocol.V2,
-    chainId: ChainId.BLAST,
-    timeout: 90000,
-    provider: new V2SubgraphProvider(
-      ChainId.BLAST,
-      3,
-      90000,
-      true,
-      1000,
-      v2TrackedEthThreshold,
-      v2UntrackedUsdThreshold,
-      v2SubgraphUrlOverride(ChainId.BLAST)
-    ),
-  },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.MAINNET,
+  //   timeout: 840000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.MAINNET,
+  //     5,
+  //     900000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.MAINNET)
+  //   ), // 1000 is the largest page size supported by thegraph
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.ARBITRUM_ONE,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.ARBITRUM_ONE,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.ARBITRUM_ONE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.POLYGON,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.POLYGON,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.POLYGON)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.OPTIMISM,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.OPTIMISM,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.OPTIMISM)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.BNB,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.BNB,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.BNB)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.AVALANCHE,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.AVALANCHE,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.AVALANCHE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.BASE,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.BASE,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.BASE)
+  //   ),
+  // },
+  // {
+  //   protocol: Protocol.V2,
+  //   chainId: ChainId.BLAST,
+  //   timeout: 90000,
+  //   provider: new V2SubgraphProvider(
+  //     ChainId.BLAST,
+  //     3,
+  //     90000,
+  //     true,
+  //     1000,
+  //     v2TrackedEthThreshold,
+  //     v2UntrackedUsdThreshold,
+  //     v2SubgraphUrlOverride(ChainId.BLAST)
+  //   ),
+  // },
 ]
