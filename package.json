@@ -1,6 +1,6 @@
 {
   "name": "@taraswap/routing-api",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "bin": {
     "app": "./dist/bin/app.js"
   },
