@@ -72,23 +72,7 @@ import { chainProtocols } from '../cron/cache-config'
 import { Protocol } from '@taraswap/router-sdk'
 import { UniJsonRpcProvider } from '../rpc/UniJsonRpcProvider'
 
-export const SUPPORTED_CHAINS: ChainId[] = [
-  // ChainId.MAINNET,
-  // ChainId.OPTIMISM,
-  // ChainId.ARBITRUM_ONE,
-  // ChainId.POLYGON,
-  // ChainId.SEPOLIA,
-  // ChainId.CELO,
-  // ChainId.CELO_ALFAJORES,
-  // ChainId.BNB,
-  // ChainId.AVALANCHE,
-  // ChainId.BASE,
-  // ChainId.BLAST,
-  // ChainId.ZORA,
-  // ChainId.ZKSYNC,
-  ChainId.TARAXA,
-  ChainId.TARAXA_TESTNET,
-]
+export const SUPPORTED_CHAINS: ChainId[] = [ChainId.TARAXA]
 const DEFAULT_TOKEN_LIST = 'https://gateway.ipfs.io/ipns/tokens.uniswap.org'
 
 export interface RequestInjected<Router> extends BaseRInj {

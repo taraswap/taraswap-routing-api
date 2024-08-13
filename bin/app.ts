@@ -181,54 +181,7 @@ export class RoutingAPIPipeline extends Stack {
     })
 
     // Load RPC provider URLs from AWS secret (for RPC Gateway)
-    const RPC_GATEWAY_PROVIDERS = [
-      // Optimism
-      // 'INFURA_10',
-      // 'QUICKNODE_10',
-      // 'ALCHEMY_10',
-      // Polygon
-      // 'QUICKNODE_137',
-      // 'INFURA_137',
-      // 'ALCHEMY_137',
-      // Celo
-      // 'QUICKNODE_42220',
-      // 'INFURA_42220',
-      // Avalanche
-      // 'INFURA_43114',
-      // 'QUICKNODE_43114',
-      // 'NIRVANA_43114',
-      // BNB
-      // 'QUICKNODE_56',
-      // Base
-      // 'QUICKNODE_8453',
-      // 'INFURA_8453',
-      // 'ALCHEMY_8453',
-      // 'NIRVANA_8453',
-      // Sepolia
-      // 'INFURA_11155111',
-      // 'ALCHEMY_11155111',
-      // Arbitrum
-      // 'INFURA_42161',
-      // 'QUICKNODE_42161',
-      // 'NIRVANA_42161',
-      // 'ALCHEMY_42161',
-      // Ethereum
-      // 'INFURA_1',
-      // 'QUICKNODE_1',
-      // 'NIRVANA_1',
-      // 'ALCHEMY_1',
-      // 'QUICKNODERETH_1',
-      // Blast
-      // 'QUICKNODE_81457',
-      // 'INFURA_81457',
-      // ZORA
-      // 'QUICKNODE_7777777',
-      // ZkSync
-      // 'QUICKNODE_324',
-      // 'ALCHEMY_324',
-      'TARAXA_841',
-      'TARAXA_842',
-    ]
+    const RPC_GATEWAY_PROVIDERS = ['TARAXA_841']
     for (const provider of RPC_GATEWAY_PROVIDERS) {
       jsonRpcProviders[provider] = jsonRpcProvidersSecret.secretValueFromJson(provider).toString()
       new CfnOutput(this, provider, {
@@ -236,34 +189,34 @@ export class RoutingAPIPipeline extends Stack {
       })
     }
 
-    // Beta us-east-2
-    const betaUsEast2Stage = new RoutingAPIStage(this, 'beta-eu-central-1', {
-      env: { account: '339713033026', region: 'eu-central-1' },
-      jsonRpcProviders: jsonRpcProviders,
-      internalApiKey: internalApiKey.secretValue.toString() || 'api-key',
-      provisionedConcurrency: 1,
-      ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString() || 'https://ethgasstation.info',
-      stage: STAGE.BETA,
-      route53Arn: route53Arn.secretValueFromJson('arn').toString() || 'arn',
-      pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString() || 'pinata-api-key',
-      pinata_secret: pinataSecret.secretValueFromJson('secret').toString() || 'pinata',
-      hosted_zone: hostedZone.secretValueFromJson('zone').toString() || 'hosted-zone',
-      tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString() || 'tenderly-user',
-      tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString() || 'tenderly-project',
-      tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString() || 'tenderly-access-key',
-      tenderlyNodeApiKey:
-        tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString() || 'tenderly-node-api-key',
-      unicornSecret:
-        unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString() || 'debug-config-unicorn-key',
-      alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString() || 'alchemy-query-key',
-      decentralizedNetworkApiKey:
-        routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString() ||
-        'decentralized-network-api-key',
-    })
+    // // Beta us-east-2
+    // const betaUsEast2Stage = new RoutingAPIStage(this, 'beta-eu-central-1', {
+    //   env: { account: '339713033026', region: 'eu-central-1' },
+    //   jsonRpcProviders: jsonRpcProviders,
+    //   internalApiKey: internalApiKey.secretValue.toString() || 'api-key',
+    //   provisionedConcurrency: 1,
+    //   ethGasStationInfoUrl: ethGasStationInfoUrl.secretValue.toString() || 'https://ethgasstation.info',
+    //   stage: STAGE.BETA,
+    //   route53Arn: route53Arn.secretValueFromJson('arn').toString() || 'arn',
+    //   pinata_key: pinataApi.secretValueFromJson('pinata-api-key').toString() || 'pinata-api-key',
+    //   pinata_secret: pinataSecret.secretValueFromJson('secret').toString() || 'pinata',
+    //   hosted_zone: hostedZone.secretValueFromJson('zone').toString() || 'hosted-zone',
+    //   tenderlyUser: tenderlyCreds.secretValueFromJson('tenderly-user').toString() || 'tenderly-user',
+    //   tenderlyProject: tenderlyCreds.secretValueFromJson('tenderly-project').toString() || 'tenderly-project',
+    //   tenderlyAccessKey: tenderlyCreds.secretValueFromJson('tenderly-access-key').toString() || 'tenderly-access-key',
+    //   tenderlyNodeApiKey:
+    //     tenderlyCreds.secretValueFromJson('tenderly-node-api-key').toString() || 'tenderly-node-api-key',
+    //   unicornSecret:
+    //     unicornSecrets.secretValueFromJson('debug-config-unicorn-key').toString() || 'debug-config-unicorn-key',
+    //   alchemyQueryKey: routingApiNewSecrets.secretValueFromJson('alchemy-query-key').toString() || 'alchemy-query-key',
+    //   decentralizedNetworkApiKey:
+    //     routingApiNewSecrets.secretValueFromJson('decentralized-network-api-key').toString() ||
+    //     'decentralized-network-api-key',
+    // })
 
-    const betaUsEast2AppStage = pipeline.addStage(betaUsEast2Stage)
+    // const betaUsEast2AppStage = pipeline.addStage(betaUsEast2Stage)
 
-    this.addIntegTests(code, betaUsEast2Stage, betaUsEast2AppStage)
+    // this.addIntegTests(code, betaUsEast2Stage, betaUsEast2AppStage)
 
     // Prod us-east-2
     const prodUsEast2Stage = new RoutingAPIStage(this, 'prod-eu-central-1', {

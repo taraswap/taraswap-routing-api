@@ -17,132 +17,22 @@ import { Protocol } from '@taraswap/router-sdk'
 
 export const RETRY_OPTIONS: { [chainId: number]: AsyncRetry.Options | undefined } = {
   ...constructSameRetryOptionsMap(DEFAULT_RETRY_OPTIONS),
-  [ChainId.BASE]: {
-    retries: 2,
-    minTimeout: 100,
-    maxTimeout: 1000,
-  },
-  [ChainId.ARBITRUM_ONE]: {
-    retries: 2,
-    minTimeout: 100,
-    maxTimeout: 1000,
-  },
-  [ChainId.OPTIMISM]: {
-    retries: 2,
-    minTimeout: 100,
-    maxTimeout: 1000,
-  },
-  [ChainId.CELO]: {
-    retries: 0,
-    minTimeout: 100,
-    maxTimeout: 1000,
-  },
-  [ChainId.BLAST]: {
-    retries: 2,
-    minTimeout: 100,
-    maxTimeout: 1000,
-  },
 }
 
 export const OPTIMISTIC_CACHED_ROUTES_BATCH_PARAMS: { [protocol: string]: { [chainId: number]: BatchParams } } = {
   [Protocol.V3]: {
     ...constructSameBatchParamsMap(DEFAULT_BATCH_PARAMS),
-    [ChainId.BASE]: {
+    [ChainId.TARAXA]: {
       multicallChunk: 1320,
-      gasLimitPerCall: 100_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.ARBITRUM_ONE]: {
-      multicallChunk: 3000,
-      gasLimitPerCall: 75_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.OPTIMISM]: {
-      multicallChunk: 1650,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.CELO]: {
-      multicallChunk: 6240,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0,
-    },
-    [ChainId.BLAST]: {
-      multicallChunk: 1200,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.AVALANCHE]: {
-      multicallChunk: 2625,
-      gasLimitPerCall: 60_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.BNB]: {
-      multicallChunk: 1850,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.POLYGON]: {
-      multicallChunk: 1850,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.MAINNET]: {
-      multicallChunk: 1974,
-      gasLimitPerCall: 75_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.ZKSYNC]: {
-      multicallChunk: 20,
-      gasLimitPerCall: 4_000_000,
+      gasLimitPerCall: 300_000,
       quoteMinSuccessRate: 0.1,
     },
   },
   [Protocol.MIXED]: {
     ...constructSameBatchParamsMap(DEFAULT_BATCH_PARAMS),
-    [ChainId.BASE]: {
+    [ChainId.TARAXA]: {
       multicallChunk: 1320,
-      gasLimitPerCall: 100_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.ARBITRUM_ONE]: {
-      multicallChunk: 3000,
-      gasLimitPerCall: 75_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.OPTIMISM]: {
-      multicallChunk: 1650,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.CELO]: {
-      multicallChunk: 6240,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0,
-    },
-    [ChainId.BLAST]: {
-      multicallChunk: 1200,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.AVALANCHE]: {
-      multicallChunk: 2625,
-      gasLimitPerCall: 60_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.BNB]: {
-      multicallChunk: 1850,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.POLYGON]: {
-      multicallChunk: 1850,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.ZKSYNC]: {
-      multicallChunk: 20,
-      gasLimitPerCall: 4_000_000,
+      gasLimitPerCall: 300_000,
       quoteMinSuccessRate: 0.1,
     },
   },
@@ -151,102 +41,17 @@ export const OPTIMISTIC_CACHED_ROUTES_BATCH_PARAMS: { [protocol: string]: { [cha
 export const NON_OPTIMISTIC_CACHED_ROUTES_BATCH_PARAMS: { [protocol: string]: { [chainId: number]: BatchParams } } = {
   [Protocol.V3]: {
     ...constructSameBatchParamsMap(DEFAULT_BATCH_PARAMS),
-    [ChainId.BASE]: {
+    [ChainId.TARAXA]: {
       multicallChunk: 660,
       gasLimitPerCall: 200_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.ARBITRUM_ONE]: {
-      multicallChunk: 1125,
-      gasLimitPerCall: 200_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.OPTIMISM]: {
-      multicallChunk: 880,
-      gasLimitPerCall: 150_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.CELO]: {
-      multicallChunk: 3120,
-      gasLimitPerCall: 160_000,
-      quoteMinSuccessRate: 0,
-    },
-    [ChainId.BLAST]: {
-      multicallChunk: 1200,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.AVALANCHE]: {
-      multicallChunk: 420,
-      gasLimitPerCall: 375_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.BNB]: {
-      multicallChunk: 2961,
-      gasLimitPerCall: 50_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.POLYGON]: {
-      multicallChunk: 987,
-      gasLimitPerCall: 150_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.MAINNET]: {
-      multicallChunk: 987,
-      gasLimitPerCall: 150_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.ZKSYNC]: {
-      multicallChunk: 20,
-      gasLimitPerCall: 4_000_000,
       quoteMinSuccessRate: 0.1,
     },
   },
   [Protocol.MIXED]: {
     ...constructSameBatchParamsMap(DEFAULT_BATCH_PARAMS),
-    [ChainId.BASE]: {
+    [ChainId.TARAXA]: {
       multicallChunk: 660,
       gasLimitPerCall: 200_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.ARBITRUM_ONE]: {
-      multicallChunk: 1125,
-      gasLimitPerCall: 200_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.OPTIMISM]: {
-      multicallChunk: 880,
-      gasLimitPerCall: 150_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.CELO]: {
-      multicallChunk: 3120,
-      gasLimitPerCall: 160_000,
-      quoteMinSuccessRate: 0,
-    },
-    [ChainId.BLAST]: {
-      multicallChunk: 1200,
-      gasLimitPerCall: 80_000,
-      quoteMinSuccessRate: 0.1,
-    },
-    [ChainId.AVALANCHE]: {
-      multicallChunk: 420,
-      gasLimitPerCall: 375_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.BNB]: {
-      multicallChunk: 2961,
-      gasLimitPerCall: 50_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.POLYGON]: {
-      multicallChunk: 987,
-      gasLimitPerCall: 150_000,
-      quoteMinSuccessRate: 0.15,
-    },
-    [ChainId.ZKSYNC]: {
-      multicallChunk: 20,
-      gasLimitPerCall: 4_000_000,
       quoteMinSuccessRate: 0.1,
     },
   },
@@ -254,92 +59,28 @@ export const NON_OPTIMISTIC_CACHED_ROUTES_BATCH_PARAMS: { [protocol: string]: { 
 
 export const GAS_ERROR_FAILURE_OVERRIDES: { [chainId: number]: FailureOverrides } = {
   ...constructSameGasErrorFailureOverridesMap(DEFAULT_GAS_ERROR_FAILURE_OVERRIDES),
-  [ChainId.BASE]: {
+  [ChainId.TARAXA]: {
     gasLimitOverride: 3_000_000,
     multicallChunk: 45,
-  },
-  [ChainId.ARBITRUM_ONE]: {
-    gasLimitOverride: 30_000_000,
-    multicallChunk: 8,
-  },
-  [ChainId.OPTIMISM]: {
-    gasLimitOverride: 3_000_000,
-    multicallChunk: 45,
-  },
-  [ChainId.CELO]: {
-    gasLimitOverride: 5_000_000,
-    multicallChunk: 5,
-  },
-  [ChainId.BLAST]: {
-    gasLimitOverride: 3_000_000,
-    multicallChunk: 45,
-  },
-  [ChainId.ZKSYNC]: {
-    gasLimitOverride: 6_000_000,
-    multicallChunk: 10,
   },
 }
 
 export const SUCCESS_RATE_FAILURE_OVERRIDES: { [chainId: number]: FailureOverrides } = {
   ...constructSameSuccessRateFailureOverridesMap(DEFAULT_SUCCESS_RATE_FAILURE_OVERRIDES),
-  [ChainId.BASE]: {
+  [ChainId.TARAXA]: {
     gasLimitOverride: 3_000_000,
     multicallChunk: 45,
-  },
-  [ChainId.ARBITRUM_ONE]: {
-    gasLimitOverride: 30_000_000,
-    multicallChunk: 8,
-  },
-  [ChainId.OPTIMISM]: {
-    gasLimitOverride: 3_000_000,
-    multicallChunk: 45,
-  },
-  [ChainId.CELO]: {
-    gasLimitOverride: 6_250_000,
-    multicallChunk: 4,
-  },
-  [ChainId.BLAST]: {
-    gasLimitOverride: 3_000_000,
-    multicallChunk: 45,
-  },
-  [ChainId.ZKSYNC]: {
-    gasLimitOverride: 6_000_000,
-    multicallChunk: 10,
   },
 }
 
 export const BLOCK_NUMBER_CONFIGS: { [chainId: number]: BlockNumberConfig } = {
   ...constructSameBlockNumberConfigsMap(DEFAULT_BLOCK_NUMBER_CONFIGS),
-  [ChainId.BASE]: {
+  [ChainId.TARAXA]: {
     baseBlockOffset: -25,
     rollback: {
       enabled: true,
       attemptsBeforeRollback: 1,
       rollbackBlockOffset: -20,
-    },
-  },
-  [ChainId.ARBITRUM_ONE]: {
-    baseBlockOffset: 0,
-    rollback: {
-      enabled: true,
-      attemptsBeforeRollback: 1,
-      rollbackBlockOffset: -10,
-    },
-  },
-  [ChainId.OPTIMISM]: {
-    baseBlockOffset: -25,
-    rollback: {
-      enabled: true,
-      attemptsBeforeRollback: 1,
-      rollbackBlockOffset: -20,
-    },
-  },
-  [ChainId.BLAST]: {
-    baseBlockOffset: -10,
-    rollback: {
-      enabled: true,
-      attemptsBeforeRollback: 1,
-      rollbackBlockOffset: -10,
     },
   },
 }
@@ -371,9 +112,8 @@ export const NEW_QUOTER_DEPLOY_BLOCK: { [chainId in ChainId]: number } = {
   [ChainId.ROOTSTOCK]: -1,
   [ChainId.BLAST]: 2370179,
   [ChainId.ZKSYNC]: 35982078,
-  [ChainId.ROOTSTOCK]: -1,
   [ChainId.TARAXA_TESTNET]: 571923,
-  [ChainId.TARAXA]: 571923, //todo: replace after deployment
+  [ChainId.TARAXA]: 10674895,
 }
 
 // 0 threshold means it's not deployed yet
@@ -403,7 +143,7 @@ export const LIKELY_OUT_OF_GAS_THRESHOLD: { [chainId in ChainId]: number } = {
   [ChainId.BLAST]: 17540 * 2, // 17540 is the single tick.cross cost on blast. We multiply by 2 to be safe,
   [ChainId.ZKSYNC]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
   [ChainId.TARAXA_TESTNET]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
-  [ChainId.TARAXA]: 17540 * 2, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
+  [ChainId.TARAXA]: 17540 * 3, // 17540 is the single tick.cross cost on zkSync. We multiply by 2 to be safe
 }
 
 // TODO: Move this new addresses to SOR

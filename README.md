@@ -61,7 +61,7 @@ The best way to develop and test the API is to deploy your own instance to AWS.
    ```
    curl --request GET '<INSERT_YOUR_URL_HERE>/quote?tokenInAddress=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2&tokenInChainId=1&tokenOutAddress=0x1f9840a85d5af5bf1d1762f925bdaddc4201f984&tokenOutChainId=1&amount=100&type=exactIn'
 
-   curl --request GET 'https://p7oxollac7.execute-api.us-east-1.amazonaws.com/prod/quote?tokenInAddress=0x30c708a962641b223b6b78237a402faed9860fc2&tokenInChainId=842&tokenOutAddress=0xcd89db7e3e32d8d273532814c9c94868db6a8642&tokenOutChainId=842&amount=1000&type=exactIn'
+   curl --request GET 'https://o4zelpt7qj.execute-api.eu-central-1.amazonaws.com/prod/quote?tokenInAddress=0x46258327541455119869d7344dd2673facf5f104&tokenInChainId=841&tokenOutAddress=0x504ccec9265b2d749b832e737739962b1c9957b0&tokenOutChainId=841&amount=1000&type=exactIn'
    ```
 
 ### Tenderly Simulation

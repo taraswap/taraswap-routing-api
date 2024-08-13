@@ -6,13 +6,5 @@
     "healthCheckSampleProb": 0.01,
     "providerInitialWeights": [1],
     "providerUrls": ["TARAXA_841"]
-  },
-  {
-    "chainId": 842,
-    "useMultiProviderProb": 1,
-    "latencyEvaluationSampleProb": 0.01,
-    "healthCheckSampleProb": 0.01,
-    "providerInitialWeights": [1],
-    "providerUrls": ["TARAXA_842"]
   }
 ]
